@@ -25,7 +25,7 @@ public class CustomLogoutSuccessHandler extends AbstractAuthenticationTargetUrlR
 	private static final String HEADER_AUTHORIZATION = "authorization";
 
 	@Autowired
-	private TokenStore tokenStore;
+	public TokenStore tokenStore;
 
 	@Override
 	public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)

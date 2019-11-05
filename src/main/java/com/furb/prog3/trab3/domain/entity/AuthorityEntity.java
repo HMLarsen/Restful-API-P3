@@ -1,12 +1,14 @@
-package com.furb.prog3.trab3.domain;
+package com.furb.prog3.trab3.domain.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-public class Authority {
+@Table(name = "authority")
+public class AuthorityEntity {
 
 	@Id
 	@NotNull
@@ -28,7 +30,7 @@ public class Authority {
 		if (o == null || getClass() != o.getClass())
 			return false;
 
-		Authority authority = (Authority) o;
+		AuthorityEntity authority = (AuthorityEntity) o;
 
 		if (!name.equals(authority.name))
 			return false;

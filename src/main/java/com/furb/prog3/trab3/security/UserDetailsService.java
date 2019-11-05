@@ -11,21 +11,21 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.furb.prog3.trab3.domain.Authority;
-import com.furb.prog3.trab3.domain.User;
+import com.furb.prog3.trab3.domain.entity.AuthorityEntity;
+import com.furb.prog3.trab3.domain.entity.UserEntity;
 import com.furb.prog3.trab3.repository.UserRepository;
 
 @Component("userDetailsService")
 public class UserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
 
 	@Autowired
-	private UserRepository userRepository;
+	public UserRepository userRepository;
 
 	@Override
 	@Transactional
 	public UserDetails loadUserByUsername(final String login) {
 		String lowercaseLogin = login.toLowerCase();
-		User userFromDatabase = userRepository.findByUsernameCaseInsensitive(lowercaseLogin);
+		UserEntity userFromDatabase = userRepository.findByUsernameCaseInsensitive(lowercaseLogin);
 
 		if (userFromDatabase == null) {
 			throw new UsernameNotFoundException("User " + lowercaseLogin + " was not found in the database");
@@ -34,7 +34,7 @@ public class UserDetailsService implements org.springframework.security.core.use
 		}
 
 		Collection<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-		for (Authority authority : userFromDatabase.getAuthorities()) {
+		for (AuthorityEntity authority : userFromDatabase.getAuthorities()) {
 			GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(authority.getName());
 			grantedAuthorities.add(grantedAuthority);
 		}

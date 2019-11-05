@@ -1,4 +1,4 @@
-package com.furb.prog3.trab3.domain;
+package com.furb.prog3.trab3.domain.entity;
 
 import java.util.Set;
 
@@ -8,10 +8,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 @Entity
-public class User {
+@Table(name = "user")
+public class UserEntity extends BaseEntity {
 
 	@Id
 	@Column(updatable = false, nullable = false)
@@ -24,8 +29,9 @@ public class User {
 	private boolean activated;
 
 	@ManyToMany
+	@Fetch(FetchMode.JOIN)
 	@JoinTable(name = "user_authority", joinColumns = @JoinColumn(name = "username"), inverseJoinColumns = @JoinColumn(name = "authority"))
-	private Set<Authority> authorities;
+	private Set<AuthorityEntity> authorities;
 
 	public String getUsername() {
 		return username;
@@ -51,11 +57,11 @@ public class User {
 		this.activated = activated;
 	}
 
-	public Set<Authority> getAuthorities() {
+	public Set<AuthorityEntity> getAuthorities() {
 		return authorities;
 	}
 
-	public void setAuthorities(Set<Authority> authorities) {
+	public void setAuthorities(Set<AuthorityEntity> authorities) {
 		this.authorities = authorities;
 	}
 
@@ -66,7 +72,7 @@ public class User {
 		if (o == null || getClass() != o.getClass())
 			return false;
 
-		User user = (User) o;
+		UserEntity user = (UserEntity) o;
 
 		if (!username.equals(user.username))
 			return false;
