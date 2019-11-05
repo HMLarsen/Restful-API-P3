@@ -16,7 +16,7 @@ import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "user")
-public class UserEntity extends BaseEntity {
+public class UserEntity {
 
 	@Id
 	@Column(updatable = false, nullable = false)

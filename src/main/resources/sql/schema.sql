@@ -31,3 +31,7 @@ CREATE TABLE oauth_refresh_token (
   token BLOB,
   authentication BLOB
 );
+
+CREATE TABLE obra (
+  id INTEGER NOT NULL
+);
