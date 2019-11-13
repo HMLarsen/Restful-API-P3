@@ -28,9 +28,9 @@ public class UserDetailsService implements org.springframework.security.core.use
 		UserEntity userFromDatabase = userRepository.findByUsernameCaseInsensitive(lowercaseLogin);
 
 		if (userFromDatabase == null) {
-			throw new UsernameNotFoundException("User " + lowercaseLogin + " was not found in the database");
+			throw new UsernameNotFoundException("Usuário " + lowercaseLogin + " não encontrado");
 		} else if (!userFromDatabase.isActivated()) {
-			throw new UserNotActivatedException("User " + lowercaseLogin + " is not activated");
+			throw new UserNotActivatedException("Usuário " + lowercaseLogin + " não está ativo");
 		}
 
 		Collection<GrantedAuthority> grantedAuthorities = new ArrayList<>();

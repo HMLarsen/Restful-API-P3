@@ -6,7 +6,13 @@ import com.furb.prog3.trab3.domain.pojo.InstituicaoPojo;
 public class InstituicaoPojoTransform implements BasePojoTransform<InstituicaoPojo, InstituicaoEntity> {
 
 	@Override
-	public void transform(InstituicaoPojo pojo, InstituicaoEntity entity) {
+	public InstituicaoEntity transformTo(InstituicaoEntity entity, InstituicaoPojo pojo) {
+		return null;
+	}
+
+	@Override
+	public InstituicaoPojo transformFrom(InstituicaoPojo pojo, InstituicaoEntity entity) {
+		return null;
 	}
 
 }

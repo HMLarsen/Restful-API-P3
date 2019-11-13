@@ -1,13 +1,17 @@
+-- ####### access control #######
+-- authority
+CREATE TABLE authority (
+  name VARCHAR(50) NOT NULL PRIMARY KEY
+);
+
+-- user
 CREATE TABLE user (
   username VARCHAR(50) NOT NULL PRIMARY KEY,
   password VARCHAR(500),
   activated BOOLEAN DEFAULT FALSE
 );
 
-CREATE TABLE authority (
-  name VARCHAR(50) NOT NULL PRIMARY KEY
-);
-
+-- user's authority
 CREATE TABLE user_authority (
     username VARCHAR(50) NOT NULL,
     authority VARCHAR(50) NOT NULL,
@@ -16,6 +20,7 @@ CREATE TABLE user_authority (
     UNIQUE INDEX user_authority_idx_1 (username, authority)
 );
 
+-- access token
 CREATE TABLE oauth_access_token (
   token_id VARCHAR(256) DEFAULT NULL,
   token BLOB,
@@ -26,12 +31,15 @@ CREATE TABLE oauth_access_token (
   refresh_token VARCHAR(256) DEFAULT NULL
 );
 
+-- refresh token
 CREATE TABLE oauth_refresh_token (
   token_id VARCHAR(256) DEFAULT NULL,
   token BLOB,
   authentication BLOB
 );
 
+-- ####### model #######
+-- obra
 CREATE TABLE obra (
   id INTEGER NOT NULL
 );
