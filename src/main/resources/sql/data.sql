@@ -11,5 +11,5 @@ INSERT INTO user_authority (username, authority) VALUES ('admin', 'ROLE_USER');
 INSERT INTO user_authority (username, authority) VALUES ('admin', 'ROLE_ADMIN');
 
 -- ####### model #######
-INSERT INTO obra VALUES (1);
-INSERT INTO obra VALUES (2);
+INSERT INTO obra (id,ano) VALUES (1,2018);
+INSERT INTO obra (id,ano) VALUES (2,2019);
