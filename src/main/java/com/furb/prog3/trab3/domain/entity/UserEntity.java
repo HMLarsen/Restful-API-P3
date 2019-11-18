@@ -73,10 +73,8 @@ public class UserEntity {
 			return false;
 
 		UserEntity user = (UserEntity) o;
-
 		if (!username.equals(user.username))
 			return false;
-
 		return true;
 	}
 

@@ -9,7 +9,3 @@ INSERT INTO user (username, password, activated) VALUES ('admin', 'b8f57d6d6ec0a
 -- user's authorities
 INSERT INTO user_authority (username, authority) VALUES ('admin', 'ROLE_USER');
 INSERT INTO user_authority (username, authority) VALUES ('admin', 'ROLE_ADMIN');
-
--- ####### model #######
-INSERT INTO obra (id,ano) VALUES (1,2018);
-INSERT INTO obra (id,ano) VALUES (2,2019);

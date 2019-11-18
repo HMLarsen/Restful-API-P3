@@ -41,13 +41,12 @@ public class OAuth2Configuration {
 
 		@Override
 		public void configure(HttpSecurity http) throws Exception {
-
 			http.exceptionHandling().authenticationEntryPoint(customAuthenticationEntryPoint).and().logout()
 					.logoutUrl("/oauth/logout").logoutSuccessHandler(customLogoutSuccessHandler).and().csrf()
 					.requireCsrfProtectionMatcher(new AntPathRequestMatcher("/oauth/authorize")).disable().headers()
 					.frameOptions().disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-					.and().authorizeRequests().antMatchers("/hello/").permitAll().antMatchers("/secure/**")
-					.authenticated();
+					.and().authorizeRequests().antMatchers("/secure/**").authenticated()
+					.antMatchers("/swagger-ui.html/").permitAll();
 		}
 
 	}

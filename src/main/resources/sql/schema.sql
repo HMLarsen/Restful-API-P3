@@ -41,14 +41,21 @@ CREATE TABLE oauth_refresh_token (
 -- ####### model #######
 -- obra
 CREATE TABLE obra (
-  id INTEGER IDENTITY(1,1) NOT NULL,
-  autor VARCHAR(50),
-  titulo VARCHAR(50),
+  id INTEGER IDENTITY(1, 1) NOT NULL,
+  autor VARCHAR(255),
+  titulo VARCHAR(255),
   ano INTEGER,
   edicao INTEGER,
-  local VARCHAR(50),
-  editora VARCHAR(50),
-  paginas VARCHAR(50),
-  isbn VARCHAR(50),
-  issn VARCHAR(50)
+  local VARCHAR(255),
+  editora VARCHAR(255),
+  paginas INTEGER,
+  isbn VARCHAR(100),
+  issn VARCHAR(100)
+);
+
+-- instituição
+CREATE TABLE instituicao (
+  id INTEGER IDENTITY(1, 1) NOT NULL,
+  nome VARCHAR(255),
+  entidade VARCHAR(255)
 );

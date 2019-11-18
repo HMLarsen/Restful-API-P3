@@ -9,7 +9,5 @@ import com.furb.prog3.trab3.domain.entity.BaseEntity;
 public interface BaseRepository<E extends BaseEntity> extends JpaRepository<E, String> {
 
 	E findById(Long id);
-	
-	E save(E entity);
-	
+
 }
