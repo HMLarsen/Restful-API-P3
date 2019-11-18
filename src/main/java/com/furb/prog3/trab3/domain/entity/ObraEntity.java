@@ -1,20 +1,30 @@
 package com.furb.prog3.trab3.domain.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "obra")
+@Table(name = "obras")
 public class ObraEntity extends BaseEntity {
 
+	@Column(name = "ds_autor", nullable = false)
 	private String autor;
+	@Column(name = "ds_titulo", nullable = false)
 	private String titulo;
+	@Column(name = "nr_ano", nullable = false)
 	private Integer ano;
+	@Column(name = "ds_edicao")
 	private String edicao;
+	@Column(name = "ds_local")
 	private String local;
+	@Column(name = "ds_editoras")
 	private String editora;
+	@Column(name = "nr_paginas")
 	private Integer paginas;
+	@Column(name = "ds_isbn")
 	private String isbn;
+	@Column(name = "ds_issn")
 	private String issn;
 
 	public String getAutor() {

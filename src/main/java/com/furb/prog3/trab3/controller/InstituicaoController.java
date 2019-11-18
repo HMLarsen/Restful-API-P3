@@ -17,8 +17,7 @@ import com.furb.prog3.trab3.domain.entity.InstituicaoEntity;
 import com.furb.prog3.trab3.domain.pojo.InstituicaoPojo;
 import com.furb.prog3.trab3.domain.pojo.transform.InstituicaoTransform;
 import com.furb.prog3.trab3.repository.InstituicaoRepository;
-import com.furb.prog3.trab3.util.ErrorResponse;
-import com.furb.prog3.trab3.util.SuccessMessage;
+import com.furb.prog3.trab3.util.SuccessResponse;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -108,11 +107,11 @@ public class InstituicaoController {
 	}
 
 	public Json getSuccessMessageDeleteEntity() {
-		return SuccessMessage.message("instituição removida");
+		return SuccessResponse.message("instituição removida");
 	}
 
 	public Json getSuccessMessageDeleteAllEntities() {
-		return SuccessMessage.message("instituição(ões) removida(s)");
+		return SuccessResponse.message("instituição(ões) removida(s)");
 	}
 
 }
