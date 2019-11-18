@@ -45,8 +45,7 @@ public class OAuth2Configuration {
 					.logoutUrl("/oauth/logout").logoutSuccessHandler(customLogoutSuccessHandler).and().csrf()
 					.requireCsrfProtectionMatcher(new AntPathRequestMatcher("/oauth/authorize")).disable().headers()
 					.frameOptions().disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-					.and().authorizeRequests().antMatchers("/secure/**").authenticated()
-					.antMatchers("/swagger-ui.html/").permitAll();
+					.and().authorizeRequests().antMatchers("/secure/**").authenticated();
 		}
 
 	}
