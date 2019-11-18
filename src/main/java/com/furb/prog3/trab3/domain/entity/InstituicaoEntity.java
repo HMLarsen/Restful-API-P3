@@ -8,9 +8,9 @@ import javax.persistence.Table;
 @Table(name = "instituicoes")
 public class InstituicaoEntity extends BaseEntity {
 
-	@Column(name = "ds_nome")
+	@Column(name = "ds_nome", nullable = false)
 	private String nome;
-	@Column(name = "ds_entidade")
+	@Column(name = "ds_entidade", nullable = false)
 	private String entidade;
 
 	public String getNome() {
