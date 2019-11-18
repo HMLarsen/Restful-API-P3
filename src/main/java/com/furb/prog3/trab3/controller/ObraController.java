@@ -7,7 +7,7 @@ import com.furb.prog3.trab3.domain.entity.ObraEntity;
 import com.furb.prog3.trab3.domain.pojo.ObraPojo;
 import com.furb.prog3.trab3.domain.pojo.transform.ObraTransform;
 import com.furb.prog3.trab3.repository.ObraRepository;
-import com.furb.prog3.trab3.util.SuccessMessage;
+import com.furb.prog3.trab3.util.SuccessResponse;
 
 import springfox.documentation.spring.web.json.Json;
 
@@ -29,12 +29,12 @@ public class ObraController extends BaseCrudController<ObraPojo, ObraEntity, Obr
 
 	@Override
 	public Json getSuccessMessageDeleteEntity() {
-		return SuccessMessage.message("obra removida");
+		return SuccessResponse.message("obra removida");
 	}
 
 	@Override
 	public Json getSuccessMessageDeleteAllEntities() {
-		return SuccessMessage.message("obra(s) removida(s)");
+		return SuccessResponse.message("obra(s) removida(s)");
 	}
 
 }

@@ -1,22 +1,37 @@
 package com.furb.prog3.trab3.domain.pojo.transform;
 
+import javax.validation.ValidationException;
+
 import com.furb.prog3.trab3.domain.entity.ObraEntity;
 import com.furb.prog3.trab3.domain.pojo.ObraPojo;
 
 public class ObraTransform implements BaseTransform<ObraPojo, ObraEntity> {
 
+	private void validate(ObraEntity entity) {
+		if (entity.getAno() == null || entity.getAno() == 0) {
+			throw new ValidationException("Ano necessita ser informado");
+		}
+		if (entity.getTitulo() == null || entity.getTitulo().isBlank()) {
+			throw new ValidationException("Título necessita ser informado");
+		}
+		if (entity.getAutor() == null || entity.getTitulo().isBlank()) {
+			throw new ValidationException("Autor necessita ser informado");
+		}
+	}
+
 	@Override
 	public ObraEntity transformToEntity(ObraPojo pojo) {
 		ObraEntity entity = new ObraEntity();
 		entity.setAno(pojo.getAno());
-		entity.setAutor(pojo.getAutor());
 		entity.setTitulo(pojo.getTitulo());
+		entity.setAutor(pojo.getAutor());
 		entity.setEdicao(pojo.getEdicao());
 		entity.setLocal(pojo.getLocal());
 		entity.setEditora(pojo.getEditora());
 		entity.setPaginas(pojo.getPaginas());
 		entity.setIsbn(pojo.getIsbn());
 		entity.setIssn(pojo.getIssn());
+		validate(entity);
 		return entity;
 	}
 
@@ -49,6 +64,7 @@ public class ObraTransform implements BaseTransform<ObraPojo, ObraEntity> {
 		if (pojo.getIssn() != null) {
 			entity.setIssn(pojo.getIssn());
 		}
+		validate(entity);
 		return entity;
 	}
 

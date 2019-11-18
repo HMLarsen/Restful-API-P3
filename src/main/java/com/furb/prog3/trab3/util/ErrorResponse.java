@@ -1,25 +1,22 @@
 package com.furb.prog3.trab3.util;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ErrorResponse {
 
-	private List<String> errors = new ArrayList<>();
+	private String error;
 
 	public ErrorResponse() {
 	}
 
 	public ErrorResponse(String error) {
-		addError(error);
+		this.error = error;
 	}
 
-	public List<String> getErrors() {
-		return errors;
+	public String getError() {
+		return error;
 	}
 
-	public void addError(String error) {
-		errors.add(error);
+	public void setError(String error) {
+		this.error = error;
 	}
 
 }

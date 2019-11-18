@@ -1,13 +1,16 @@
 package com.furb.prog3.trab3.domain.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "instituicao")
+@Table(name = "instituicoes")
 public class InstituicaoEntity extends BaseEntity {
 
+	@Column(name = "ds_nome")
 	private String nome;
+	@Column(name = "ds_entidade")
 	private String entidade;
 
 	public String getNome() {
