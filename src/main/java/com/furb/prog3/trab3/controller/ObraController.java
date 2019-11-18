@@ -17,6 +17,7 @@ import com.furb.prog3.trab3.domain.entity.ObraEntity;
 import com.furb.prog3.trab3.domain.pojo.ObraPojo;
 import com.furb.prog3.trab3.domain.pojo.transform.ObraTransform;
 import com.furb.prog3.trab3.repository.ObraRepository;
+import com.furb.prog3.trab3.util.ErrorResponse;
 import com.furb.prog3.trab3.util.SuccessResponse;
 
 import springfox.documentation.spring.web.json.Json;
