@@ -22,9 +22,15 @@ import com.furb.prog3.trab3.util.SuccessResponse;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import springfox.documentation.spring.web.json.Json;
 
-@Api(value = "API Rest Instituicao")
+@Api(value = "API Rest Instituição")
+@ApiResponses(value = { @ApiResponse(code = 401, message = "Você não tem permissão para acessar este recurso"),
+		@ApiResponse(code = 403, message = "O serviço está indisponível no momento tente novamente mais tarde"),
+		@ApiResponse(code = 404, message = "Serviço não encontrado"),
+		@ApiResponse(code = 500, message = "Foi gerada uma exceção"), })
 @Controller
 @RequestMapping(value = InstituicaoController.ROUTE)
 public class InstituicaoController {
@@ -34,7 +40,8 @@ public class InstituicaoController {
 	@Autowired
 	protected InstituicaoRepository repository;
 
-	@ApiOperation(value = "Retorna todas as instituicoes")
+	@ApiOperation(value = "Retorna todas as instituições")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Retorna todas as instituições") })
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<List<InstituicaoEntity>> getAll() {
@@ -42,7 +49,8 @@ public class InstituicaoController {
 		return ResponseEntity.ok(entities);
 	}
 
-	@ApiOperation(value = "Retorna uma instituicao")
+	@ApiOperation(value = "Retorna uma instituição")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Retorna uma instituição") })
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<?> getById(@PathVariable("id") Long id) {
@@ -53,6 +61,9 @@ public class InstituicaoController {
 		return ResponseEntity.notFound().build();
 	}
 
+	@ApiOperation(value = "Insere uma instituição")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Instituição inserida com sucesso"),
+			@ApiResponse(code = 201, message = "Instituição inserida") })
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<?> save(@RequestBody InstituicaoPojo pojo) {
@@ -63,6 +74,9 @@ public class InstituicaoController {
 		}
 	}
 
+	@ApiOperation(value = "Altera uma instituição")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Instituição alterada com sucesso"),
+			@ApiResponse(code = 201, message = "Instituição alterada") })
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseBody
 	public ResponseEntity<?> update(@RequestBody InstituicaoPojo pojo, @PathVariable("id") Long id) {
@@ -78,6 +92,9 @@ public class InstituicaoController {
 		return ResponseEntity.notFound().build();
 	}
 
+	@ApiOperation(value = "Deleta uma instituição")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Instituição deletada com sucesso"),
+			@ApiResponse(code = 201, message = "Instituição não encontrada") })
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ResponseBody
 	public ResponseEntity<?> deleteById(@PathVariable("id") Long id) {
@@ -89,6 +106,9 @@ public class InstituicaoController {
 		return ResponseEntity.notFound().build();
 	}
 
+	@ApiOperation(value = "Deleta todas as instituições")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Instituições deletadas com sucesso"),
+			@ApiResponse(code = 201, message = "Nenhuma instituição foi encontrada") })
 	@RequestMapping(method = RequestMethod.DELETE)
 	@ResponseBody
 	public ResponseEntity<?> deleteAll() {

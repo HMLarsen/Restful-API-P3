@@ -20,8 +20,17 @@ import com.furb.prog3.trab3.repository.ObraRepository;
 import com.furb.prog3.trab3.util.ErrorResponse;
 import com.furb.prog3.trab3.util.SuccessResponse;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import springfox.documentation.spring.web.json.Json;
 
+@Api(value = "API Rest Obra")
+@ApiResponses(value = { @ApiResponse(code = 401, message = "Você não tem permissão para acessar este recurso"),
+		@ApiResponse(code = 403, message = "O serviço está indisponível no momento tente novamente mais tarde"),
+		@ApiResponse(code = 404, message = "Serviço não encontrado"),
+		@ApiResponse(code = 500, message = "Foi gerada uma exceção"), })
 @Controller
 @RequestMapping(value = ObraController.ROUTE)
 public class ObraController {
@@ -31,6 +40,8 @@ public class ObraController {
 	@Autowired
 	protected ObraRepository repository;
 
+	@ApiOperation(value = "Retorna todas as obras")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Retorna todas as obras") })
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<List<ObraEntity>> getAll() {
@@ -38,6 +49,8 @@ public class ObraController {
 		return ResponseEntity.ok(entities);
 	}
 
+	@ApiOperation(value = "Retorna uma obra")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Retorna uma obra") })
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<?> getById(@PathVariable("id") Long id) {
@@ -48,6 +61,9 @@ public class ObraController {
 		return ResponseEntity.notFound().build();
 	}
 
+	@ApiOperation(value = "Insere uma obra")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Obra inserida com sucesso"),
+			@ApiResponse(code = 201, message = "Obra inserida") })
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<?> save(@RequestBody ObraPojo pojo) {
@@ -58,6 +74,9 @@ public class ObraController {
 		}
 	}
 
+	@ApiOperation(value = "Altera uma obra")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Obra alterada com sucesso"),
+			@ApiResponse(code = 201, message = "Obra alterada") })
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseBody
 	public ResponseEntity<?> update(@RequestBody ObraPojo pojo, @PathVariable("id") Long id) {
@@ -73,6 +92,9 @@ public class ObraController {
 		return ResponseEntity.notFound().build();
 	}
 
+	@ApiOperation(value = "Deleta uma obra")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Obra deletada com sucesso"),
+			@ApiResponse(code = 201, message = "Obra não encontrada") })
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ResponseBody
 	public ResponseEntity<?> deleteById(@PathVariable("id") Long id) {
@@ -84,6 +106,9 @@ public class ObraController {
 		return ResponseEntity.notFound().build();
 	}
 
+	@ApiOperation(value = "Deleta toda as obras")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Obras deletadas com sucesso"),
+			@ApiResponse(code = 201, message = "Nenhuma obra foi encontrada") })
 	@RequestMapping(method = RequestMethod.DELETE)
 	@ResponseBody
 	public ResponseEntity<?> deleteAll() {
