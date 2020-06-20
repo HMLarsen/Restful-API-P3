@@ -2,6 +2,10 @@
 
 Prototype to exemplify a backend with restful API and OAuth2 authentication. Project developed for Programming 3 class at FURB.
 
+Authors
+> [Hugo Marcel Larsen](https://github.com/HMLarsen) <br>
+> [Lucas Vanderlinde](https://github.com/LucasVander) <br>
+
 ## Build & Run
 ```java
 mvn clean install spring-boot:run
@@ -39,7 +43,3 @@ curl -i -H "Authorization: Bearer <access_token>" http://localhost:8080/api/secu
 
 Secure Hello!
 ```
-
-Authors
-> [Hugo Marcel Larsen](https://github.com/HMLarsen) <br>
-> [Lucas Vanderlinde](https://github.com/LucasVander) <br>
